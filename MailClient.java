@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of class MailClient here.
  * 
@@ -7,27 +8,49 @@
  */
 public class MailClient
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    // Representa el servidor asociado al cliente
+    private MailServer server;
+    //Representa la dirección de correo del usuario que usa ese cliente
+    private String user;
+    
     /**
      * Constructor for objects of class MailClient
      */
-    public MailClient()
+    public MailClient(MailServer newServer, String newUser)
     {
-        // initialise instance variables
-        x = 0;
+        server = newServer;
+        user = newUser;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Recupera del servidor el correo (objeto MailItem)
      */
-    public int sampleMethod(int y)
+    public MailItem getNextMailItem()
     {
-        // put your code here
-        return x + y;
+        return server.getNextMailItem(user);
+    }
+    /**
+     * Recupera del servidor un correo que tenga el usuario e imprime los datos del mensaje.
+     */
+    public void printNextMailItem()
+    {
+        MailItem correo = server.getNextMailItem(user);
+        if(correo == null)
+        {
+            System.out.println("En este momento, no se ha encontrado ningún mensaje.");
+                   
+        }
+        else
+        {
+            correo.print();    
+        }
+    }
+    /**
+     * Envia un email al servidor asociado al cliente.
+     */
+    public void sendMailItem(String to, String message)
+    {
+        MailItem correo = new MailItem(user, to, message);
+        server.post(correo);
     }
 }
