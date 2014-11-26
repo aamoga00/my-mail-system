@@ -1,7 +1,7 @@
 
 
 /**
- * Write a description of class MailClient here.
+ * Esta clase representa al usuario del correo electronico.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -10,27 +10,28 @@ public class MailClient
 {
     // Representa el servidor asociado al cliente
     private MailServer server;
-    //Representa la dirección de correo del usuario que usa ese cliente
+    //Almacena la dirección de correo del usuario que usa el cliente.
     private String user;
     
     /**
      * Constructor for objects of class MailClient
      */
-    public MailClient(MailServer newServer, String newUser)
+    public MailClient(MailServer server, String user)
     {
-        server = newServer;
-        user = newUser;
+        this.server = server;
+        this.user = user;
     }
 
     /**
      * Recupera del servidor el correo (objeto MailItem)
      */
     public MailItem getNextMailItem()
+    
     {
-        return server.getNextMailItem(user);
+       return server.getNextMailItem(user);
     }
     /**
-     * Recupera del servidor un correo que tenga el usuario e imprime los datos del mensaje.
+     * Obtiene del servidor el siguiente correo del usuario y lo imprime por pantalla
      */
     public void printNextMailItem()
     {
@@ -46,7 +47,7 @@ public class MailClient
         }
     }
     /**
-     * Envia un email al servidor asociado al cliente.
+     * Envia un correo a la dirección indicada con el contenido pasado por parametro.
      */
     public void sendMailItem(String to, String message)
     {

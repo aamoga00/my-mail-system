@@ -1,25 +1,27 @@
 
 /**
- * Write a description of class MailItem here.
+ * Esta clase representa a un mensaje de email.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class MailItem
 {
-    // instance variables - replace the example below with your own
+    // Almacena de quien es el mensaje
     private String from;
+    //Almacena para quien es el mensaje
     private String to;
+    //Almacena el contenido del mensaje
     private String message;
 
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String newFrom, String newTo, String newMessage)
+    public MailItem(String from, String to, String message)
     {
-       from = newFrom;
-       to = newTo;
-       message = newMessage;
+       this.from = from;
+       this.to = to;
+       this.message = message;
     }
 
     /**
