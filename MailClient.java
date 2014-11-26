@@ -54,4 +54,11 @@ public class MailClient
         MailItem correo = new MailItem(user, to, subject, message);
         server.post(correo);
     }
+    /**
+     * Nos dice cuantos correos tenemos en el servidor y nos devuelve el numero por pantalla
+     */
+    public int howManyMailItems()
+    {
+        return server.howManyMailItems(user);
+    }
 }
