@@ -61,4 +61,20 @@ public class MailClient
     {
         return server.howManyMailItems(user);
     }
+    /**
+     * Al recibir un correo contesta automaticamente al emisor con un mensaje estandar e incorporando el mensaje original
+     */
+    public void getNextMailItemAndAutorespond()
+    {
+        MailItem correoOriginal = server.getNextMailItem(user);
+        if(correoOriginal != null)
+        {
+           String to = correoOriginal.getFrom();
+           String subject = "RE: "+ correoOriginal.getSubject();
+           String message = correoOriginal.getMessage() + "\nEstamos de vacaciones";
+           MailItem correoNuevo = new MailItem (user,to, subject, message);
+           sendMailItem(to, subject, message);     
+        }
+    }
+    
 }

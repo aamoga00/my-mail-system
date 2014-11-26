@@ -44,9 +44,13 @@ public class MailItem
     /**
      * Nos devuelve el mensaje que esta escrito en el mail.
      */
-    public String message()
+    public String getMessage()
     {
         return message;
+    }
+    public String getSubject()
+    {
+        return subject;
     }
     /**
      * Nos muestra por pantalla los atributos del objeto mailItem.
