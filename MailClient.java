@@ -87,6 +87,13 @@ public class MailClient
     */
     public void printLastMailItem()
     {
-       lastEmail.print();
+       if(lastEmail != null)
+       {
+           lastEmail.print();
+       }
+       else
+       {
+           System.out.println("No tienen ningún mensaje");
+       }
     }
 }
